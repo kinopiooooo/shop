@@ -46,23 +46,6 @@ function App() {
       
       <div className='container'>
         <div className='row'>
-        {/* <div className='row'>
-          <div className='col-md-4'>
-            <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="80%"/>
-            <h3>{ data[0].title }</h3>
-            <p>{ data[0].content } & { data[0].price }</p>
-          </div>
-          <div className='col-md-4'>
-            <img src="https://codingapple1.github.io/shop/shoes2.jpg" width="80%"/>
-            <h3>{ data[1].title }</h3>
-            <p>{ data[1].content } & { data[1].price }</p>
-          </div>
-          <div className='col-md-4'>
-            <img src="https://codingapple1.github.io/shop/shoes3.jpg" width="80%"/>
-            <h3>{ data[2].title }</h3>
-            <p>{ data[2].content } & { data[2].price }</p>
-          </div>
-        </div> */}
         {
           shoes.map((item, i)=>{
             return(
