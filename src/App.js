@@ -45,6 +45,7 @@ function App() {
 
       
       <div className='container'>
+        <div className='row'>
         {/* <div className='row'>
           <div className='col-md-4'>
             <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="80%"/>
@@ -69,7 +70,7 @@ function App() {
             )
           })
         }
-        
+        </div>
       </div>
     </div>
   );
