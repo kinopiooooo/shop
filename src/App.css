@@ -6,6 +6,17 @@
   height: 40vmin;
   pointer-events: none;
 }
+.jumbotron{
+  background: url('./background.jpg');
+  background-size: cover;
+  background-position: center;
+  padding:50px;
+  color:#fff;
+  text-shadow: 0px 3px 3px rgb(41, 41, 41);
+}
+.jumbotron h2{
+  font-size:calc(1px + 7vmin)
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
