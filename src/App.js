@@ -4,23 +4,26 @@ import { Navbar,Nav,Container,NavDropdown, Carousel, Button} from 'react-bootstr
 import './App.css';
 import { useState } from 'react';
 import Data from './data.js';
+import Detail from './Detail.js';
+import $ from 'jquery';
 
 import {Link, Route, Switch} from 'react-router-dom';
 
 function App() {
 
   let [shoes, setshoes] = useState(Data);
-
+  $('body').hide();
+  $('body').fadeIn(500);
   return (
     <div className="App">
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Kinopio shop</Navbar.Brand>
+          <Navbar.Brand><Link to="/">Kinopio shop</Link></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
+              <Nav> <Link to="/">Home</Link> </Nav>
+              <Nav> <Link to="detail">Detaile</Link> </Nav>
               <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -30,47 +33,41 @@ function App() {
               </NavDropdown>
             </Nav>
             <Nav>
-              <Nav.Link href="#deets">More deets</Nav.Link>
-              <Nav.Link eventKey={2} href="#memes">
+              <Nav href="#deets">More deets</Nav>
+              <Nav eventKey={2} href="#memes">
                 Dank memes
-              </Nav.Link>
+              </Nav>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Route exact path="/">
-        <div className='jumbotron'>
-          <h2>Hollo, Kinopio!</h2>
-          <p>Kinopio Shop 새로운 아무도 상상하지 못한 제품들이 여러운을 찾아갑니다!!</p>
-          <p><Button variant="primary">Learn more</Button>{' '}</p>
-        </div>
-        <div className='container'>
-          <div className='row'>
-          {
-            shoes.map((item, i)=>{
-              return(
-                <Card shoes={shoes[i]} i={i} key={i}/>
-              )
-            })
-          }
+      <Switch>
+        <Route exact path="/">
+          <div className='jumbotron'>
+            <h2>Hollo, Kinopio!</h2>
+            <p>Kinopio Shop 새로운 아무도 상상하지 못한 제품들이 여러운을 찾아갑니다!!</p>
+            <p><Button variant="primary">Learn more</Button>{' '}</p>
           </div>
-        </div>
-      </Route>
-      <Route path="/detail">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6">
-            <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
+          <div className='container'>
+            <div className='row'>
+            {
+              shoes.map((item, i)=>{
+                return(
+                  <Card shoes={shoes[i]} i={i} key={i}/>
+                )
+              })
+            }
+            </div>
           </div>
-          <div className="col-md-6 mt-4">
-            <h4 className="pt-5">상품명</h4>
-            <p>상품설명</p>
-            <p>120000원</p>
-            <button className="btn btn-danger">주문하기</button> 
-          </div>
-        </div>
-      </div> 
-      </Route>
+        </Route>
+        <Route path="/detail/:id">
+          <Detail shoes={shoes}></Detail>
+        </Route>
+
+        <Route path="/:id">
+          <div>아무거나 적었을때 이거 나옴</div>
+        </Route>
+      </Switch>
 
       
       
