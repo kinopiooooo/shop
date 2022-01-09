@@ -4,7 +4,8 @@ import { Navbar,Nav,Container,NavDropdown, Carousel, Button} from 'react-bootstr
 import './App.css';
 import { useState } from 'react';
 import Data from './data.js';
-import data from './data.js';
+
+import {Link, Route, Switch} from 'react-router-dom';
 
 function App() {
 
@@ -14,47 +15,65 @@ function App() {
     <div className="App">
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-        <Navbar.Brand href="#home">Kinopio shop</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-          <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              Dank memes
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
+          <Navbar.Brand href="#home">Kinopio shop</Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="#features">Features</Nav.Link>
+              <Nav.Link href="#pricing">Pricing</Nav.Link>
+              <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+            <Nav>
+              <Nav.Link href="#deets">More deets</Nav.Link>
+              <Nav.Link eventKey={2} href="#memes">
+                Dank memes
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
-      <div className='jumbotron'>
-        <h2>Hollo, Kinopio!</h2>
-        <p>Kinopio Shop 새로운 아무도 상상하지 못한 제품들이 여러운을 찾아갑니다!!</p>
-        <p><Button variant="primary">Learn more</Button>{' '}</p>
-      </div>
+      <Route exact path="/">
+        <div className='jumbotron'>
+          <h2>Hollo, Kinopio!</h2>
+          <p>Kinopio Shop 새로운 아무도 상상하지 못한 제품들이 여러운을 찾아갑니다!!</p>
+          <p><Button variant="primary">Learn more</Button>{' '}</p>
+        </div>
+        <div className='container'>
+          <div className='row'>
+          {
+            shoes.map((item, i)=>{
+              return(
+                <Card shoes={shoes[i]} i={i} key={i}/>
+              )
+            })
+          }
+          </div>
+        </div>
+      </Route>
+      <Route path="/detail">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6">
+            <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
+          </div>
+          <div className="col-md-6 mt-4">
+            <h4 className="pt-5">상품명</h4>
+            <p>상품설명</p>
+            <p>120000원</p>
+            <button className="btn btn-danger">주문하기</button> 
+          </div>
+        </div>
+      </div> 
+      </Route>
 
       
-      <div className='container'>
-        <div className='row'>
-        {
-          shoes.map((item, i)=>{
-            return(
-              <Card shoes={shoes[i]} i={i} key={i}/>
-            )
-          })
-        }
-        </div>
-      </div>
+      
     </div>
   );
 }
