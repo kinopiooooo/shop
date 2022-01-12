@@ -2,18 +2,25 @@
 import logo from './logo.svg';
 import { Navbar,Nav,Container,NavDropdown, Carousel, Button} from 'react-bootstrap';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Data from './data.js';
 import Detail from './Detail.js';
 import $ from 'jquery';
-
 import {Link, Route, Switch} from 'react-router-dom';
+import axios from 'axios';
+import Loading from './Loading';
 
 function App() {
 
   let [shoes, setshoes] = useState(Data);
-  $('body').hide();
-  $('body').fadeIn(500);
+  let [str_loading, setstr_loading] = useState(false)
+  let [inventories, setinventories] = useState([10,11,12]);
+
+  useEffect(()=>{
+    $('body').hide();
+    $('body').fadeIn(500);
+  },[])
+
   return (
     <div className="App">
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -22,8 +29,8 @@ function App() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav> <Link to="/">Home</Link> </Nav>
-              <Nav> <Link to="detail">Detaile</Link> </Nav>
+              <Nav.Link as={Link} to="/">Home</Nav.Link>
+              <Nav.Link as={Link} to="/detail">Detail</Nav.Link>
               <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -58,14 +65,32 @@ function App() {
               })
             }
             </div>
+            <button className='btn btn-primary' onClick={()=>{ 
+              setstr_loading(true);
+              axios.get('https://codingapple1.github.io/shop/data2.json')
+              .then((result)=>{
+                setstr_loading(false)
+                setshoes([...shoes, ...result.data])
+                console.log('성공')
+               })
+              .catch(()=>{ 
+                setstr_loading(false)
+                console.log('실패')
+               })
+             }}>더 보기</button>
+             {
+                str_loading === true
+                ? <Loading></Loading>
+                : null
+              }
           </div>
         </Route>
         <Route path="/detail/:id">
-          <Detail shoes={shoes}></Detail>
+          <Detail shoes={shoes} inventories={inventories} setinventories={setinventories}></Detail>
         </Route>
 
         <Route path="/:id">
-          <div>아무거나 적었을때 이거 나옴</div>
+          <div>아무거나 적었을때 이거 나옴asdsad</div>
         </Route>
       </Switch>
 
@@ -76,12 +101,13 @@ function App() {
 }
 function Card(props){
   return(
-    <div className='col-md-4'>
+    <div className='col-md-4' ><Link to={"/detail/"+props.i}>
       <img src={"https://codingapple1.github.io/shop/shoes"+(props.i+1)+".jpg"} width="80%"/>
       <h3>{ props.shoes.title }</h3>
       <p>{ props.shoes.content } & { props.shoes.price } price</p>
-    </div>
+      </Link></div>
   )
 }
+
 
 export default App;
