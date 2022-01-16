@@ -3,8 +3,6 @@ import {useHistory, useParams } from 'react-router-dom'
 import styled from "styled-components";
 import './Detail.scss';
 import $ from 'jquery';
-import { Nav } from "react-bootstrap";
-import { CSSTransition } from "react-transition-group";
 
 let Titlebox = styled.div`
     padding : 20px;
@@ -29,8 +27,6 @@ function Detail(props){
 
     // let targetShoes = props.shoes.find(item => item.id == id);
 
-    let [tabStr, settabStr] = useState(0);
-    let [tabAniSwich, settabAniSwich] = useState(false);
 
     useEffect(()=>{
         let alerttimer = setTimeout(()=>{
@@ -77,37 +73,10 @@ function Detail(props){
                 <button className="btn btn-secondary" onClick={()=>{ history.goBack(); }}>뒤로가기</button> 
                 </div>
             </div>
-
-            
-            <Nav className="mt-5" variant="tabs" defaultActiveKey="link-0">
-                <Nav.Item>
-                    <Nav.Link eventKey="link-0" onClick={ ()=>{ settabStr(0);settabAniSwich(false) } }>Option 1</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="link-1" onClick={ ()=>{ settabStr(1);settabAniSwich(false) } }>Option 2</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="link-2" onClick={ ()=>{ settabStr(2);settabAniSwich(false) } }>Option 3</Nav.Link>
-                </Nav.Item>
-            </Nav>
-            <CSSTransition in={ tabAniSwich } classNames="wow" timeout={500}>
-                <Tabcontent tabStr={ tabStr } settabAniSwich={settabAniSwich}></Tabcontent>
-            </CSSTransition>
         </div> 
     )
 }
-function Tabcontent(props){
-    useEffect(()=>{
-        props.settabAniSwich(true)
-    })
-    if(props.tabStr==0){
-        return (<div>1</div>)
-    } else if(props.tabStr==1){
-        return (<div>2</div>)
-    } else if(props.tabStr==2){
-        return (<div>3</div>)
-    }
-}
+
 function Inventories(props){
     return(
         <p>재고 : { props.inventories[props.id] }</p>
