@@ -9,6 +9,7 @@ import $ from 'jquery';
 import {Link, Route, Switch} from 'react-router-dom';
 import axios from 'axios';
 import Loading from './Loading';
+import Cart from './Cart.js';
 
 let inventoriescontext = React.createContext();
 
@@ -24,9 +25,10 @@ function App() {
     $('body').hide();
     $('body').fadeIn(500);
   },[])
-
+  {console.log("ss")}
   return (
     <div className="App">
+      
       <MainNav></MainNav>
       <Switch>
         <Route exact path="/">
@@ -36,8 +38,12 @@ function App() {
           <Home shoes = {shoes} setshoes={ setshoes } str_loading={ str_loading } setstr_loading={ setstr_loading } inventories={ inventories }></Home>
         </Route>
         <Route path="/detail/:id">
-          <Detail shoes={shoes} inventories={inventories} setinventories={setinventories}></Detail>
+          {/* <Detail shoes={shoes} inventories={inventories} setinventories={setinventories}></Detail> */}
+          <div></div>
         </Route>
+        {/* <Route path="/cart">
+          <Cart></Cart>
+        </Route> */}
 
         <Route path="/:id">
           <div>아무거나 적었을때 이거 나옴asdsad</div>

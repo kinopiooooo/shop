@@ -27,7 +27,7 @@ function Detail(props){
     let { id } = useParams();
     let history = useHistory();
 
-    let targetShoes = props.shoes.find(item => item.id == id);
+    // let targetShoes = props.shoes.find(item => item.id == id);
 
     let [tabStr, settabStr] = useState(0);
     let [tabAniSwich, settabAniSwich] = useState(false);
@@ -64,9 +64,9 @@ function Detail(props){
                 <img src={"https://codingapple1.github.io/shop/shoes"+(Number(id)+1)+".jpg"} width="100%" />
                 </div>
                 <div className="col-md-6 mt-4">
-                <h4 className="pt-5">{ targetShoes.title }</h4>
+                {/* <h4 className="pt-5">{ targetShoes.title }</h4>
                 <p>{ targetShoes.content }</p>
-                <p> { targetShoes.price } </p>
+                <p> { targetShoes.price } </p> */}
 
                 <Inventories inventories={props.inventories} id={id}> </Inventories>
                 <button className="btn btn-danger mr-1" onClick={ ()=>{ 
