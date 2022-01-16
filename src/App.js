@@ -9,7 +9,10 @@ import $ from 'jquery';
 import {Link, Route, Switch} from 'react-router-dom';
 import axios from 'axios';
 import Loading from './Loading';
+<<<<<<< HEAD
 import Cart from './Cart.js';
+=======
+>>>>>>> parent of bb7e2b3 (220113)
 
 function App() {
 
@@ -25,9 +28,12 @@ function App() {
   return (
     <div className="App">
 <<<<<<< HEAD
+<<<<<<< HEAD
       
       <MainNav></MainNav>
 =======
+=======
+>>>>>>> parent of bb7e2b3 (220113)
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand><Link to="/">Kinopio shop</Link></Navbar.Brand>
@@ -53,6 +59,9 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+<<<<<<< HEAD
+>>>>>>> parent of bb7e2b3 (220113)
+=======
 >>>>>>> parent of bb7e2b3 (220113)
       <Switch>
         <Route exact path="/">
