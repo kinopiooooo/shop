@@ -18,17 +18,11 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "5",
     "react-scripts": "^5.0.0",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "react-serve-build": "^0.2.1",
     "react-transition-group": "^4.4.2",
     "redux": "^4.1.2",
     "serve-build": "^0.1.0",
     "styled-component": "^2.8.0",
-=======
->>>>>>> parent of bb7e2b3 (220113)
-=======
->>>>>>> parent of bb7e2b3 (220113)
     "styled-components": "^5.3.3",
     "web-vitals": "^2.1.3"
   },

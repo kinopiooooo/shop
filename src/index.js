@@ -3,17 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
 import { BrowserRouter } from 'react-router-dom';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { HashRouter } from 'react-router-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-=======
->>>>>>> parent of bb7e2b3 (220113)
-=======
->>>>>>> parent of bb7e2b3 (220113)
+
 
 let store = createStore(()=>{
   return [
@@ -28,23 +22,11 @@ let store = createStore(()=>{
 
 ReactDOM.render(
   <React.StrictMode>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <HashRouter>
       <Provider store={store}>
         <App />
       </Provider>
     </HashRouter>
-=======
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
->>>>>>> parent of bb7e2b3 (220113)
-=======
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
->>>>>>> parent of bb7e2b3 (220113)
   </React.StrictMode>,
   document.getElementById('root')
 );
